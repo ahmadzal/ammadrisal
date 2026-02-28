@@ -95,7 +95,7 @@ export default function CertificatesPage() {
             <div className="text-gray-300 text-sm sm:text-base">Categories</div>
           </div>
           <div className="bg-gradient-to-br from-pink-900/30 to-pink-800/30 rounded-lg p-4 sm:p-6 text-center sm:col-span-2 lg:col-span-1">
-            <div className="text-3xl sm:text-4xl font-bold text-pink-400 mb-2">2023</div>
+            <div className="text-3xl sm:text-4xl font-bold text-pink-400 mb-2">2026</div>
             <div className="text-gray-300 text-sm sm:text-base">Latest Year</div>
           </div>
         </motion.div>
