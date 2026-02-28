@@ -49,26 +49,26 @@ export default function ProjectsPage() {
   ];
 
   return (
-    <div className="min-h-screen pt-24 pb-20">
+    <div className="min-h-screen pt-20 sm:pt-24 pb-16 sm:pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 px-4">
             My <span className="bg-gradient-to-r from-primary-400 to-purple-500 bg-clip-text text-transparent">Projects</span>
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto px-4">
             A collection of my recent work in web development and UI/UX design. 
             Each project represents a unique challenge and learning experience.
           </p>
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -78,7 +78,7 @@ export default function ProjectsPage() {
               className="bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-all duration-300 group"
             >
               {/* Project Image */}
-              <div className="relative h-48 overflow-hidden bg-gray-700">
+              <div className="relative h-48 sm:h-52 md:h-56 overflow-hidden bg-gray-700">
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -92,20 +92,20 @@ export default function ProjectsPage() {
               </div>
 
               {/* Project Info */}
-              <div className="p-6">
-                <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-primary-400 transition-colors">
+              <div className="p-4 sm:p-6">
+                <h3 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 text-white group-hover:text-primary-400 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-gray-400 mb-4 line-clamp-3">
+                <p className="text-gray-400 mb-3 sm:mb-4 line-clamp-3 text-sm sm:text-base">
                   {project.description}
                 </p>
 
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2 mb-3 sm:mb-4">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-xs bg-gray-700 text-gray-300 px-3 py-1 rounded-full"
+                      className="text-xs sm:text-sm bg-gray-700 text-gray-300 px-2 sm:px-3 py-1 rounded-full"
                     >
                       {tag}
                     </span>
@@ -113,15 +113,15 @@ export default function ProjectsPage() {
                 </div>
 
                 {/* Links */}
-                <div className="flex gap-4">
+                <div className="flex gap-3 sm:gap-4 flex-wrap">
                   {project.github && (
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-gray-300 hover:text-primary-400 transition-colors"
+                      className="flex items-center gap-2 text-gray-300 hover:text-primary-400 transition-colors text-sm sm:text-base"
                     >
-                      <Github size={20} />
+                      <Github size={18} className="sm:w-5 sm:h-5" />
                       <span>Code</span>
                     </a>
                   )}
@@ -129,9 +129,9 @@ export default function ProjectsPage() {
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-300 hover:text-primary-400 transition-colors"
+                    className="flex items-center gap-2 text-gray-300 hover:text-primary-400 transition-colors text-sm sm:text-base"
                   >
-                    <ExternalLink size={20} />
+                    <ExternalLink size={18} className="sm:w-5 sm:h-5" />
                     <span>Demo</span>
                   </a>
                 </div>
@@ -146,10 +146,10 @@ export default function ProjectsPage() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mt-20 text-center bg-gradient-to-r from-primary-900/30 to-purple-900/30 rounded-2xl p-12"
+          className="mt-16 sm:mt-20 text-center bg-gradient-to-r from-primary-900/30 to-purple-900/30 rounded-2xl p-8 sm:p-12"
         >
-          <h2 className="text-3xl font-bold mb-4">Interested in working together?</h2>
-          <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 px-4">Interested in working together?</h2>
+          <p className="text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto px-4 text-sm sm:text-base">
             I'm always open to discussing new projects and opportunities.
           </p>
           <a

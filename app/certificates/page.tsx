@@ -58,22 +58,22 @@ export default function CertificatesPage() {
   const categories = ['All', ...Array.from(new Set(certificates.map(cert => cert.category)))];
 
   return (
-    <div className="min-h-screen pt-24 pb-20">
+    <div className="min-h-screen pt-20 sm:pt-24 pb-16 sm:pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <div className="inline-block mb-6">
-            <Award className="w-16 h-16 text-primary-400 mx-auto" />
+          <div className="inline-block mb-4 sm:mb-6">
+            <Award className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-primary-400 mx-auto" />
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 px-4">
             Certificates & <span className="bg-gradient-to-r from-primary-400 to-purple-500 bg-clip-text text-transparent">Achievements</span>
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto px-4">
             Continuous learning is key to staying relevant in tech. Here are some of the 
             certifications I've earned to enhance my skills and knowledge.
           </p>
@@ -84,63 +84,63 @@ export default function CertificatesPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16"
         >
-          <div className="bg-gradient-to-br from-primary-900/30 to-primary-800/30 rounded-lg p-6 text-center">
-            <div className="text-4xl font-bold text-primary-400 mb-2">{certificates.length}</div>
-            <div className="text-gray-300">Total Certificates</div>
+          <div className="bg-gradient-to-br from-primary-900/30 to-primary-800/30 rounded-lg p-4 sm:p-6 text-center">
+            <div className="text-3xl sm:text-4xl font-bold text-primary-400 mb-2">{certificates.length}</div>
+            <div className="text-gray-300 text-sm sm:text-base">Total Certificates</div>
           </div>
-          <div className="bg-gradient-to-br from-purple-900/30 to-purple-800/30 rounded-lg p-6 text-center">
-            <div className="text-4xl font-bold text-purple-400 mb-2">{categories.length - 1}</div>
-            <div className="text-gray-300">Categories</div>
+          <div className="bg-gradient-to-br from-purple-900/30 to-purple-800/30 rounded-lg p-4 sm:p-6 text-center">
+            <div className="text-3xl sm:text-4xl font-bold text-purple-400 mb-2">{categories.length - 1}</div>
+            <div className="text-gray-300 text-sm sm:text-base">Categories</div>
           </div>
-          <div className="bg-gradient-to-br from-pink-900/30 to-pink-800/30 rounded-lg p-6 text-center">
-            <div className="text-4xl font-bold text-pink-400 mb-2">2024</div>
-            <div className="text-gray-300">Latest Year</div>
+          <div className="bg-gradient-to-br from-pink-900/30 to-pink-800/30 rounded-lg p-4 sm:p-6 text-center sm:col-span-2 lg:col-span-1">
+            <div className="text-3xl sm:text-4xl font-bold text-pink-400 mb-2">2023</div>
+            <div className="text-gray-300 text-sm sm:text-base">Latest Year</div>
           </div>
         </motion.div>
 
         {/* Certificates Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           {certificates.map((cert, index) => (
             <motion.div
               key={cert.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-gray-800 rounded-lg p-6 hover:bg-gray-750 transition-all duration-300 border border-gray-700 hover:border-primary-500 group"
+              className="bg-gray-800 rounded-lg p-4 sm:p-6 hover:bg-gray-750 transition-all duration-300 border border-gray-700 hover:border-primary-500 group"
             >
               {/* Header */}
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold mb-2 text-white group-hover:text-primary-400 transition-colors">
+              <div className="flex items-start justify-between mb-3 sm:mb-4 gap-3">
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg sm:text-xl font-bold mb-2 text-white group-hover:text-primary-400 transition-colors">
                     {cert.title}
                   </h3>
-                  <p className="text-primary-400 font-semibold mb-1">{cert.issuer}</p>
-                  <div className="flex items-center gap-2 text-gray-400 text-sm">
+                  <p className="text-primary-400 font-semibold mb-1 text-sm sm:text-base">{cert.issuer}</p>
+                  <div className="flex items-center gap-2 text-gray-400 text-xs sm:text-sm">
                     <Calendar size={16} />
                     <span>{cert.date}</span>
                   </div>
                 </div>
-                <div className="bg-primary-500/20 p-3 rounded-lg">
-                  <Award className="text-primary-400" size={24} />
+                <div className="bg-primary-500/20 p-2 sm:p-3 rounded-lg flex-shrink-0">
+                  <Award className="text-primary-400" size={20} />
                 </div>
               </div>
 
               {/* Description */}
-              <p className="text-gray-400 mb-4 text-sm leading-relaxed">
+              <p className="text-gray-400 mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed">
                 {cert.description}
               </p>
 
               {/* Category Badge */}
-              <div className="mb-4">
+              <div className="mb-3 sm:mb-4">
                 <span className="inline-block bg-purple-500/20 text-purple-300 text-xs px-3 py-1 rounded-full">
                   {cert.category}
                 </span>
               </div>
 
               {/* Skills */}
-              <div className="mb-4">
+              <div className="mb-3 sm:mb-4">
                 <div className="flex flex-wrap gap-2">
                   {cert.skills.map((skill) => (
                     <span
@@ -154,18 +154,18 @@ export default function CertificatesPage() {
               </div>
 
               {/* Footer */}
-              <div className="flex items-center justify-between pt-4 border-t border-gray-700">
-                <span className="text-xs text-gray-500">
+              <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-gray-700 gap-2 flex-wrap">
+                <span className="text-xs text-gray-500 truncate">
                   ID: {cert.credentialId}
                 </span>
                 <a
                   href={cert.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-primary-400 hover:text-primary-300 transition-colors text-sm font-semibold"
+                  className="flex items-center gap-1 sm:gap-2 text-primary-400 hover:text-primary-300 transition-colors text-xs sm:text-sm font-semibold flex-shrink-0"
                 >
                   <span>View Certificate</span>
-                  <ExternalLink size={16} />
+                  <ExternalLink size={14} className="sm:w-4 sm:h-4" />
                 </a>
               </div>
             </motion.div>
@@ -178,10 +178,10 @@ export default function CertificatesPage() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mt-20 text-center bg-gradient-to-r from-primary-900/30 to-purple-900/30 rounded-2xl p-12"
+          className="mt-16 sm:mt-20 text-center bg-gradient-to-r from-primary-900/30 to-purple-900/30 rounded-2xl p-8 sm:p-12"
         >
-          <h2 className="text-3xl font-bold mb-4">Interested in my skillset?</h2>
-          <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 px-4">Interested in my skillset?</h2>
+          <p className="text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto px-4 text-sm sm:text-base">
             Let's discuss how my expertise can help bring your project to life.
           </p>
           <a
