@@ -53,6 +53,18 @@ export default function CertificatesPage() {
       isLocal: true,
       category: 'UI/UX Design',
     },
+    {
+      id: 5,
+      title: 'Sertifikasi Kompetensi Desain Grafis (BNSP)',
+      issuer: 'Badan Nasional Sertifikasi Profesi (BNSP)',
+      date: 'Coming Soon (In Progress)',
+      credentialId: 'Pending Verification',
+      description: 'Official national competency certification for Graphic Designers covering visual branding, layout design, print production, and digital vector illustration.',
+      skills: ['Graphic Design', 'Brand Identity', 'Visual Communication', 'Print Production', 'BNSP Standards'],
+      link: null,
+      isPending: true,
+      category: 'Graphic Design',
+    },
   ];
 
   const categories = ['All', ...Array.from(new Set(certificates.map(cert => cert.category)))];
@@ -75,7 +87,7 @@ export default function CertificatesPage() {
           </h1>
           <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto px-4">
             Continuous learning is key to staying relevant in tech. Here are some of the 
-            certifications I've earned to enhance my skills and knowledge.
+            certifications I've earned and currently pursuing.
           </p>
         </motion.div>
 
@@ -108,65 +120,80 @@ export default function CertificatesPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-gray-800 rounded-lg p-4 sm:p-6 hover:bg-gray-750 transition-all duration-300 border border-gray-700 hover:border-primary-500 group"
+              className="bg-gray-800 rounded-lg p-4 sm:p-6 hover:bg-gray-750 transition-all duration-300 border border-gray-700 hover:border-primary-500 group flex flex-col justify-between"
             >
-              {/* Header */}
-              <div className="flex items-start justify-between mb-3 sm:mb-4 gap-3">
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-lg sm:text-xl font-bold mb-2 text-white group-hover:text-primary-400 transition-colors">
-                    {cert.title}
-                  </h3>
-                  <p className="text-primary-400 font-semibold mb-1 text-sm sm:text-base">{cert.issuer}</p>
-                  <div className="flex items-center gap-2 text-gray-400 text-xs sm:text-sm">
-                    <Calendar size={16} />
-                    <span>{cert.date}</span>
+              <div>
+                {/* Header */}
+                <div className="flex items-start justify-between mb-3 sm:mb-4 gap-3">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1 flex-wrap">
+                      <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-primary-400 transition-colors">
+                        {cert.title}
+                      </h3>
+                      {cert.isPending && (
+                        <span className="bg-amber-500/20 text-amber-300 text-[10px] font-semibold px-2 py-0.5 rounded border border-amber-500/30 animate-pulse">
+                          ⏳ Coming Soon
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-primary-400 font-semibold mb-1 text-sm sm:text-base">{cert.issuer}</p>
+                    <div className="flex items-center gap-2 text-gray-400 text-xs sm:text-sm">
+                      <Calendar size={16} />
+                      <span>{cert.date}</span>
+                    </div>
+                  </div>
+                  <div className="bg-primary-500/20 p-2 sm:p-3 rounded-lg flex-shrink-0">
+                    <Award className="text-primary-400" size={20} />
                   </div>
                 </div>
-                <div className="bg-primary-500/20 p-2 sm:p-3 rounded-lg flex-shrink-0">
-                  <Award className="text-primary-400" size={20} />
+
+                {/* Description */}
+                <p className="text-gray-400 mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed">
+                  {cert.description}
+                </p>
+
+                {/* Category Badge */}
+                <div className="mb-3 sm:mb-4">
+                  <span className="inline-block bg-purple-500/20 text-purple-300 text-xs px-3 py-1 rounded-full">
+                    {cert.category}
+                  </span>
                 </div>
-              </div>
 
-              {/* Description */}
-              <p className="text-gray-400 mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed">
-                {cert.description}
-              </p>
-
-              {/* Category Badge */}
-              <div className="mb-3 sm:mb-4">
-                <span className="inline-block bg-purple-500/20 text-purple-300 text-xs px-3 py-1 rounded-full">
-                  {cert.category}
-                </span>
-              </div>
-
-              {/* Skills */}
-              <div className="mb-3 sm:mb-4">
-                <div className="flex flex-wrap gap-2">
-                  {cert.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+                {/* Skills */}
+                <div className="mb-3 sm:mb-4">
+                  <div className="flex flex-wrap gap-2">
+                    {cert.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
 
               {/* Footer */}
-              <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-gray-700 gap-2 flex-wrap">
+              <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-gray-700 gap-2 flex-wrap mt-auto">
                 <span className="text-xs text-gray-500 truncate">
-                  ID: {cert.credentialId}
+                  ID: {cert.credentialId || 'N/A'}
                 </span>
-                <a
-                  href={cert.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1 sm:gap-2 text-primary-400 hover:text-primary-300 transition-colors text-xs sm:text-sm font-semibold flex-shrink-0"
-                >
-                  <span>View Certificate</span>
-                  <ExternalLink size={14} className="sm:w-4 sm:h-4" />
-                </a>
+                {cert.link ? (
+                  <a
+                    href={cert.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 sm:gap-2 text-primary-400 hover:text-primary-300 transition-colors text-xs sm:text-sm font-semibold flex-shrink-0"
+                  >
+                    <span>View Certificate</span>
+                    <ExternalLink size={14} className="sm:w-4 sm:h-4" />
+                  </a>
+                ) : (
+                  <span className="text-amber-400/90 text-xs font-medium italic flex items-center gap-1">
+                    ⏳ Certificate Issue Pending
+                  </span>
+                )}
               </div>
             </motion.div>
           ))}

@@ -1,10 +1,13 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, FileText } from 'lucide-react';
 import Image from 'next/image';
 
 export default function ProjectsPage() {
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
   const projects = [
     {
       id: 1,
@@ -46,7 +49,88 @@ export default function ProjectsPage() {
       demo: 'https://www.figma.com/proto/Wk9kqrJsSftEwvCozFcWmk/Mobile-Design--Copy-?node-id=3047-19114&p=f&t=CHlAV6AFXqmBZFrl-1&scaling=scale-down&content-scaling=fixed&page-id=101%3A6&starting-point-node-id=3047%3A19112&show-proto-sidebar=1',
       category: 'UI/UX Design',
     },
+    {
+      id: 5,
+      title: 'Magazine Design Showcase',
+      description: 'An editorial design portfolio featuring magazine layouts, cover designs, and print publications that combine modern aesthetics, structured layouts, and effective visual storytelling.',
+      image: '/images/Cover Majalah.jpg',
+      tags: ['CorelDRAW'],
+      github: undefined,
+      demo: '/Karya/Magazine.pdf#toolbar=0&navpanes=0',
+      category: 'Graphic Design',
+    },
+    {
+      id: 6,
+      title: 'Mouse Packaging Design Showcase',
+      description: 'A packaging design project for a computer mouse featuring modern layouts, compelling product presentation, and clear information hierarchy to create an attractive and professional retail packaging experience.',
+      image: '/images/Mouse.png',
+      tags: ['CorelDRAW'],
+      github: undefined,
+      demo: '/Karya/Kemasan Mouse.pdf#toolbar=0&navpanes=0',
+      category: 'Graphic Design',
+    },
+    {
+      id: 7,
+      title: 'Japan Travel Poster Design Showcase',
+      description: 'This project was created based on a client design brief to promote travel packages to Japan. The objective was to design an eye-catching promotional flyer that effectively communicates key information while reflecting the beauty and cultural identity of Japan through compelling visuals, typography, and a well-structured layout.',
+      image: '/images/PTJ.jpg',
+      imagePosition: 'object-top',
+      tags: ['Adobe Illustrator'],
+      github: undefined,
+      demo: '/Karya/PTJ.pdf#toolbar=0&navpanes=0',
+      category: 'Graphic Design',
+    },
+    {
+      id: 8,
+      title: 'Coffee Promotional Flyer Design Showcase',
+      description: 'This promotional flyer was designed based on a clients creative brief for Kopi Kala. The objective was to create an eye-catching marketing material that highlights the products premium quality while strengthening brand identity through engaging visuals, bold typography, and a clean information hierarchy.',
+      image: '/images/Koffe.jpg',
+      imagePosition: 'object-top',
+      tags: ['Adobe Illustrator'],
+      github: undefined,
+      demo: '/Karya/Koffe.pdf#toolbar=0&navpanes=0',
+      category: 'Graphic Design',
+    },
+    {
+      id: 9,
+      title: 'Merdeka Run Event Poster Showcase',
+      description: 'TThis event poster was designed based on a clients creative brief to promote the "Merdeka Run 2026" campaign in celebration of Indonesia Independence Day. The design focuses on creating a dynamic and energetic visual identity while presenting essential event information through bold typography, strong visual hierarchy, and engaging promotional elements.',
+      image: '/images/MerdekaRun.jpg',
+      imagePosition: 'object-top',
+      tags: ['Adobe Photoshop'],
+      github: undefined,
+      demo: '/Karya/MerdekaRun.pdf#toolbar=0&navpanes=0',
+      category: 'Graphic Design',
+    },
+    {
+      id: 10,
+      title: 'Custom Merchandise Mug Design Showcase',
+      description: 'This custom mug design was created based on a design brief, featuring a gaming and anime-inspired theme. The project focuses on transforming digital artwork into a visually appealing merchandise design by combining balanced composition, high-quality mockup presentation, and print-ready layout for promotional and collectible purposes.',
+      image: '/images/mug.png',
+      imagePosition: 'object-top',
+      tags: ['Adobe Illustrator'],
+      github: undefined,
+      demo: '/Karya/mockup MUG.pdf#toolbar=0&navpanes=0',
+      category: 'Graphic Design',
+    },
+    {
+      id: 11,
+      title: 'Graphic Design T-Shirt Design',
+      description: 'Desain apparel merchandise yang dikembangkan berdasarkan design brief dari klien dengan menekankan branding modern, konsistensi visual, serta artwork yang siap cetak untuk kebutuhan promosi maupun identitas organisasi.',
+      image: '/images/baju desain.jpeg',
+      imagePosition: 'object-top',
+      tags: ['Adobe Illustrator'],
+      github: undefined,
+      demo: '/Karya/baju.pdf#toolbar=0&navpanes=0',
+      category: 'Graphic Design',
+    },
   ];
+
+  const categories = ['All', 'UI/UX Design', 'Full Stack', 'Graphic Design'];
+
+  const filteredProjects = selectedCategory === 'All'
+    ? projects
+    : projects.filter(p => p.category === selectedCategory);
 
   return (
     <div className="min-h-screen pt-20 sm:pt-24 pb-16 sm:pb-20">
@@ -56,20 +140,35 @@ export default function ProjectsPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12 sm:mb-16"
+          className="text-center mb-10 sm:mb-12"
         >
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 px-4">
             My <span className="bg-gradient-to-r from-primary-400 to-purple-500 bg-clip-text text-transparent">Projects</span>
           </h1>
           <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto px-4">
-            A collection of my recent work in web development and UI/UX design. 
-            Each project represents a unique challenge and learning experience.
+            A collection of my work in UI/UX design, full stack web development, and graphic design.
           </p>
         </motion.div>
 
+        {/* Category Filters */}
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10 sm:mb-12">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 ${selectedCategory === cat
+                ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/20 scale-105'
+                : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white border border-gray-700'
+                }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
         {/* Projects Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
-          {projects.map((project, index) => (
+          {filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 20 }}
@@ -83,7 +182,7 @@ export default function ProjectsPage() {
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-300"
+                  className={`object-cover ${project.imagePosition || 'object-center'} group-hover:scale-110 transition-transform duration-300`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
                 <div className="absolute top-4 right-4 bg-primary-500 text-white text-xs px-3 py-1 rounded-full">
@@ -125,15 +224,26 @@ export default function ProjectsPage() {
                       <span>Code</span>
                     </a>
                   )}
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-300 hover:text-primary-400 transition-colors text-sm sm:text-base"
-                  >
-                    <ExternalLink size={18} className="sm:w-5 sm:h-5" />
-                    <span>Demo</span>
-                  </a>
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-gray-300 hover:text-primary-400 transition-colors text-sm sm:text-base"
+                    >
+                      {project.demo.includes('.pdf') ? (
+                        <>
+                          <FileText size={18} className="sm:w-5 sm:h-5 text-primary-400" />
+                          <span>View PDF</span>
+                        </>
+                      ) : (
+                        <>
+                          <ExternalLink size={18} className="sm:w-5 sm:h-5" />
+                          <span>Demo</span>
+                        </>
+                      )}
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>
