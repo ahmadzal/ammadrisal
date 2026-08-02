@@ -94,7 +94,7 @@ export default function ProjectsPage() {
     {
       id: 9,
       title: 'Merdeka Run Event Poster Showcase',
-      description: 'TThis event poster was designed based on a clients creative brief to promote the "Merdeka Run 2026" campaign in celebration of Indonesia Independence Day. The design focuses on creating a dynamic and energetic visual identity while presenting essential event information through bold typography, strong visual hierarchy, and engaging promotional elements.',
+      description: 'This event poster was designed based on a clients creative brief to promote the "Merdeka Run 2026" campaign in celebration of Indonesia Independence Day. The design focuses on creating a dynamic and energetic visual identity while presenting essential event information through bold typography, strong visual hierarchy, and engaging promotional elements.',
       image: '/images/MerdekaRun.jpg',
       imagePosition: 'object-top',
       tags: ['Adobe Photoshop'],
@@ -116,7 +116,7 @@ export default function ProjectsPage() {
     {
       id: 11,
       title: 'Graphic Design T-Shirt Design',
-      description: 'Desain apparel merchandise yang dikembangkan berdasarkan design brief dari klien dengan menekankan branding modern, konsistensi visual, serta artwork yang siap cetak untuk kebutuhan promosi maupun identitas organisasi.',
+      description: 'A merchandise apparel design developed from a clients design brief, emphasizing modern branding, visual consistency, and print-ready artwork suitable for promotional and organizational purposes.',
       image: '/images/baju desain.jpeg',
       imagePosition: 'object-top',
       tags: ['Adobe Illustrator'],
